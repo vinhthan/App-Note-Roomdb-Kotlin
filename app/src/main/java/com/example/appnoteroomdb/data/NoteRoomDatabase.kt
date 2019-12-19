@@ -1,4 +1,4 @@
-package com.example.appnoteroomdb
+package com.example.appnoteroomdb.data
 
 import android.content.Context
 import androidx.room.Database
@@ -15,7 +15,8 @@ abstract class NoteRoomDatabase : RoomDatabase() {
         private val DB_NAME = "note_db"
 
         fun getDatabase(context: Context): NoteRoomDatabase {
-            val tempInstance = INSTANCE
+            val tempInstance =
+                INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }

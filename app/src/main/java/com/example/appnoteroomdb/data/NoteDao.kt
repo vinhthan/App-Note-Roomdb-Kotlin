@@ -1,8 +1,7 @@
-package com.example.appnoteroomdb
+package com.example.appnoteroomdb.data
 
 import androidx.room.*
-import androidx.sqlite.db.SupportSQLiteQuery
-import java.util.*
+import com.example.appnoteroomdb.data.Note
 
 
 @Dao

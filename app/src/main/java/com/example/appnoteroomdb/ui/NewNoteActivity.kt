@@ -1,7 +1,10 @@
-package com.example.appnoteroomdb
+package com.example.appnoteroomdb.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.appnoteroomdb.data.Note
+import com.example.appnoteroomdb.data.NoteRoomDatabase
+import com.example.appnoteroomdb.R
 import kotlinx.android.synthetic.main.activity_new_note.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +19,7 @@ class NewNoteActivity : AppCompatActivity(), CoroutineScope {
     //callbacks se lam cho ung dung bi cham di
     //Để xử lý task tốn nhiều thời gian mà không ảnh hưởng đến Main Thread thì đa số Dev đều dùng CallBack Pattern
 
-    private var noteDB : NoteRoomDatabase ?= null
+    private var noteDB : NoteRoomDatabase?= null
     private lateinit var mJob: Job
 
     override val coroutineContext: CoroutineContext
@@ -27,12 +30,17 @@ class NewNoteActivity : AppCompatActivity(), CoroutineScope {
         setContentView(R.layout.activity_new_note)
 
         mJob = Job()
-        noteDB = NoteRoomDatabase.getDatabase(this)
+        noteDB =
+            NoteRoomDatabase.getDatabase(this)
         button_save.setOnClickListener {
             launch {
                 //save note into database
                 val strContent: String = content_note.text.toString()
-                noteDB?.noteDao()?.insert(Note(content = strContent))
+                noteDB?.noteDao()?.insert(
+                    Note(
+                        content = strContent
+                    )
+                )
 
                 finish()
             }

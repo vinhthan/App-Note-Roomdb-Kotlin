@@ -1,10 +1,13 @@
-package com.example.appnoteroomdb
+package com.example.appnoteroomdb.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appnoteroomdb.R
+import com.example.appnoteroomdb.data.Note
+import com.example.appnoteroomdb.data.NoteRoomDatabase
 import kotlinx.android.synthetic.main.note_item.view.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -26,7 +29,9 @@ class NoteListAdapter internal constructor(context: Context, val noteDB: NoteRoo
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.note_item, parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(
+            itemView
+        )
     }
 
     override fun getItemCount(): Int {

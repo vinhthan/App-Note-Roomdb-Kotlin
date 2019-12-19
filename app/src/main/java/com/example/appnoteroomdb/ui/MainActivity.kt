@@ -1,9 +1,13 @@
-package com.example.appnoteroomdb
+package com.example.appnoteroomdb.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appnoteroomdb.*
+import com.example.appnoteroomdb.adapter.NoteListAdapter
+import com.example.appnoteroomdb.data.Note
+import com.example.appnoteroomdb.data.NoteRoomDatabase
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -31,9 +35,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
 
         mJob = Job()
 
-        noteDB = NoteRoomDatabase.getDatabase(this)
+        noteDB =
+            NoteRoomDatabase.getDatabase(this)
         //!! se ném ngoại lệ khi giá trị của noteDbB là null
-        adapter = NoteListAdapter(this, noteDB!!)
+        adapter =
+            NoteListAdapter(this, noteDB!!)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
